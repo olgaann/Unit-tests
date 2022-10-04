@@ -7,7 +7,9 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Stream;
 
 public class MagicBoxTest {
@@ -46,9 +48,12 @@ public class MagicBoxTest {
             boxInt.add(i);
         }
 
-        int random = boxInt.pick();
-        boolean result = list.stream().anyMatch(value -> value.equals(random));
-        assert result;
+        Set<Integer> set = new HashSet<Integer>(list);
+        Assertions.assertTrue(set.contains(boxInt.pick()));
+
+//        int random = boxInt.pick();
+//        boolean result = list.stream().anyMatch(value -> value.equals(random));
+//        assert result;
     }
 
 
